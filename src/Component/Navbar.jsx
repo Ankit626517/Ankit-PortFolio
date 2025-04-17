@@ -8,7 +8,7 @@ import Animate from './Animate';  // Import Animate Component
 function Navbar() {
   return (
     <>
-      <nav className='w-full md:w-80 bg-gray-900 border-2 border-amber-300 md:rounded-xl p-4 md:p-6 shadow-xl sm:'>
+      <nav className='w-full h-fit md:w-80 bg-gray-900 border-2 border-amber-300 md:rounded-xl p-4 md:p-6 shadow-xl sm:'>
         <div className='flex flex-col gap-5 justify-center items-center'>
           
           {/* Profile Image */}
@@ -39,10 +39,10 @@ function Navbar() {
                 <FaUser className='text-xl text-white' />
                 <Link to='/about' className='text-white w-full focus:outline-none'>About</Link>
               </li>
-              <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
+              {/* <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
                 <FaFileAlt className='text-xl text-white' />
                 <Link to='/education' className='text-white w-full focus:outline-none'>Education</Link>
-              </li>
+              </li> */}
               <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
                 <FaCubes className='text-xl text-white' />
                 <Link to='/projects' className='text-white w-full focus:outline-none'>Projects</Link>

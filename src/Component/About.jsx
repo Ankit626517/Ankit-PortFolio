@@ -7,36 +7,19 @@ import {
   SiMongodb, SiTailwindcss, SiVite, SiExpress,
 } from "react-icons/si";
 
-const skills = [
-  { icon: <FaHtml5 />, color: "text-orange-500" },
-  { icon: <FaCss3Alt />, color: "text-blue-500" },
-  { icon: <FaJsSquare />, color: "text-yellow-300" },
-  { icon: <FaReact />, color: "text-cyan-400" },
-  { icon: <SiVite />, color: "text-purple-500" },
-  { icon: <FaNodeJs />, color: "text-green-500" },
-  { icon: <SiExpress />, color: "text-gray-300" },
-  { icon: <SiMongodb />, color: "text-green-600" },
-  { icon: <SiTailwindcss />, color: "text-cyan-300" },
-  { icon: <FaGithub />, color: "text-white" },
-];
 
-const projects = [
-  {
-    title: "🎯 Recipe Finder Website",
-    desc: "Includes chatbot using Gemini API, detailed cooking steps & ingredients.",
-  },
-  {
-    title: "📘 Student Career Guide",
-    desc: "Major project helping students after 10th with course & career decisions.",
-  },
-  {
-    title: "📰 News Website",
-    desc: "React-based dynamic news content UI.",
-  },
-  {
-    title: "✍️ Blog Platform (MERN)",
-    desc: "Full-stack blogging site with MongoDB, Express, React, and Node.",
-  },
+// Skills array with icon, color, and name
+const skills = [
+  { icon: <FaHtml5 />, color: "text-orange-500", name: "HTML5" },
+  { icon: <FaCss3Alt />, color: "text-blue-500", name: "CSS3" },
+  { icon: <FaJsSquare />, color: "text-yellow-300", name: "JavaScript" },
+  { icon: <FaReact />, color: "text-cyan-400", name: "React" },
+  { icon: <SiVite />, color: "text-purple-500", name: "Vite" },
+  { icon: <FaNodeJs />, color: "text-green-500", name: "Node.js" },
+  { icon: <SiExpress />, color: "text-gray-300", name: "Express" },
+  { icon: <SiMongodb />, color: "text-green-600", name: "MongoDB" },
+  { icon: <SiTailwindcss />, color: "text-cyan-300", name: "Tailwind" },
+  { icon: <FaGithub />, color: "text-white", name: "GitHub" },
 ];
 
 const About = () => {
@@ -52,9 +35,10 @@ const About = () => {
         <div className="text-center">
           <motion.h1
             className="text-4xl md:text-6xl font-bold text-yellow-400"
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            whileHover={{ scale: 1.1 }}
           >
             Hi, I'm Ankit Rathor
           </motion.h1>
@@ -62,55 +46,89 @@ const About = () => {
             className="text-lg md:text-2xl text-gray-300 mt-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             A passionate MERN Stack Developer & Tech Explorer 🚀
           </motion.p>
         </div>
 
-        {/* Glass Card About Me */}
+        {/* About Me Glass Card */}
         <motion.div
-          className="bg-white/5 backdrop-blur-md border border-yellow-500 rounded-3xl p-8 md:p-12 shadow-2xl"
+          className="bg-white/5 backdrop-blur-lg border border-yellow-500 rounded-3xl p-8 md:p-12 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
         >
           <p className="text-gray-300 text-base md:text-lg leading-loose">
             I'm currently pursuing my B.Tech in Computer Science from{" "}
-            <span className="text-pink-400 font-semibold">Lakshmi Narain College of Technology</span>. I love turning ideas into reality using modern web technologies. I’m driven by curiosity and thrive on building beautiful, functional UIs and complete full-stack web apps.
+            <span className="text-pink-400 font-semibold">
+              Lakshmi Narain College of Technology
+            </span>. I love turning ideas into reality using modern web technologies. I’m driven by curiosity and thrive on building beautiful, functional UIs and complete full-stack web apps.
           </p>
         </motion.div>
 
         {/* Skills Section */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white">My Toolbox 🧰</h2>
-          <div className="grid grid-cols-5 md:grid-cols-10 gap-5 text-4xl text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-white text-center">
+            My Toolbox 🧰
+          </h2>
+
+          <motion.div
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-6 text-center justify-items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
             {skills.map((skill, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.2 }}
-                className={`transition-transform ${skill.color}`}
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                className="flex flex-col items-center space-y-2"
               >
-                {skill.icon}
+                <div className={`text-4xl sm:text-5xl animate-bounce ${skill.color}`}>
+                  {skill.icon}
+                </div>
+                <motion.span
+                  className={`text-sm sm:text-base font-medium animate-bounce ${skill.color}`}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {skill.name}
+                </motion.span>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Projects Section */}
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-white">Featured Projects 💼</h2>
-          <div className="space-y-6">
-            {projects.map((project, i) => (
+        {/* Technologies In Detail Section */}
+        <div className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-yellow-400">
+            Technologies in Detail 🚧
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              { title: "Frontend", techs: ["React", "Vite", "TailwindCSS"] },
+              { title: "Backend", techs: ["Node.js", "Express.js"] },
+              { title: "Database & Tools", techs: ["MongoDB", "GitHub"] },
+            ].map((section, index) => (
               <motion.div
-                key={i}
-                className="bg-gray-800 rounded-xl p-5 border-l-4 border-yellow-400 hover:border-cyan-400 shadow-lg"
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2 * i }}
+                key={index}
+                className="bg-white/5 border border-gray-600 rounded-2xl p-6 hover:border-yellow-400 hover:shadow-xl transition duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 * index, duration: 0.6 }}
               >
-                <h3 className="text-xl font-bold text-yellow-300">{project.title}</h3>
-                <p className="text-gray-300 text-sm mt-2">{project.desc}</p>
+                <h3 className="text-xl font-semibold text-cyan-300 mb-4">
+                  {section.title}
+                </h3>
+                <ul className="list-disc list-inside space-y-1 text-gray-300">
+                  {section.techs.map((tech, i) => (
+                    <li key={i} className="hover:text-yellow-400 cursor-pointer transition duration-200">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -121,11 +139,13 @@ const About = () => {
           className="text-center text-sm text-gray-500 pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          whileHover={{ color: "#f1c40f", scale: 1.1 }}
         >
           Let's collaborate and build something awesome together 💻✨
         </motion.p>
       </motion.div>
+     
     </div>
   );
 };
