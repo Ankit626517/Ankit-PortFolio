@@ -14,6 +14,7 @@ import SkillIcons from "./AboutSection/SkillIcons";
 import SocialLinks from "./AboutSection/SocialLinks";
 import TechDetails from "./AboutSection/TechDetails";
 import Education from "./AboutSection/Education";
+import DownloadResume from "./AboutSection/DownloadResume";
 
 
 
@@ -73,6 +74,10 @@ const About = () => {
         {/* Technologies In Detail Section */}
         <TechDetails/>
         {/* Technologies In Detail Section */}
+
+        {/* Resume DOwnload Button */}
+        <DownloadResume/>
+        {/* Resume DOwnload Button */}
 
  {/* Education Section */}
  <Education/>
