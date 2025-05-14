@@ -1,71 +1,145 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/Gallary/logo.svg';
-import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaHome, FaUser, FaFileAlt, FaCubes, FaDownload } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { FaHome, FaUser, FaCubes, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from "framer-motion";
-import Animate from './Animate';  // Import Animate Component
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
+  // Scroll logic with smooth effect
+  useEffect(() => {
+    let timeoutId;
+
+    const handleScroll = () => {
+      clearTimeout(timeoutId);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10 || lastScrollY > currentScrollY + 10) {
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollY + 10) {
+        setShowNavbar(false);
+      }
+
+      timeoutId = setTimeout(() => {
+        setLastScrollY(currentScrollY);
+      }, 100); // small delay for smoothness
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
     <>
-      <nav className='w-full h-fit md:w-80 bg-gray-900 border-2 border-amber-300 md:rounded-xl p-4 md:p-6 shadow-xl sm:'>
-        <div className='flex flex-col gap-5 justify-center items-center'>
-          
-          {/* Profile Image */}
-          <img className='w-32 md:w-40 rounded-full border-4 border-gray-400' src={logo} alt='Profile' />
-          
-          {/* Name & Role */}
-          <h1 className='font-bold text-xl md:text-2xl text-white text-center'>Ankit Rathor</h1>
-          
-          {/* Use the Animate Component for Animated Text */}
-          <Animate />
+      <nav
+        className={`w-full bg-gray-900/90 backdrop-blur border-b-2 border-amber-300 shadow-xl fixed top-0 z-50 transition-all duration-500 ease-in-out ${
+          showNavbar ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className='container mx-auto px-4'>
+          {/* Desktop Navbar */}
+          <div className='hidden md:flex items-center justify-between py-4'>
+            <div className='flex items-center space-x-4'>
+              <img className='w-12 h-12 rounded-full border-2 border-gray-400' src={logo} alt='Profile' />
+              <h1 className="font-bold text-xl text-white">Ankit Rathor</h1>
+            </div>
 
-          {/* Social Icons */}
-          <ul className='flex gap-4 md:gap-5'>
-            <li><FaEnvelope size={20} className='text-gray-500 hover:text-red-500' /></li>
-            <li><FaLinkedin size={20} className='text-gray-500 hover:text-blue-700' /></li>
-            <li><FaGithub size={20} className='text-gray-500 hover:text-black' /></li>
-            <li><FaInstagram size={20} className='text-gray-500 hover:text-pink-500' /></li>
-          </ul>
-
-          {/* Nav Links */}
-          <div className='w-full md:w-64 bg-gray-950 rounded-2xl p-4'>
-            <ul className='space-y-2 text-sm md:text-base'>
-              <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
-                <FaHome className='text-xl text-white' />
-                <Link to='/' className='text-white w-full focus:outline-none'>Home</Link>
-              </li>
-              <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
-                <FaUser className='text-xl text-white' />
-                <Link to='/about' className='text-white w-full focus:outline-none'>About</Link>
-              </li>
-              {/* <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
-                <FaFileAlt className='text-xl text-white' />
-                <Link to='/education' className='text-white w-full focus:outline-none'>Education</Link>
-              </li> */}
-              <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
-                <FaCubes className='text-xl text-white' />
-                <Link to='/projects' className='text-white w-full focus:outline-none'>Projects</Link>
-              </li>
-              <li className='flex items-center gap-3 p-2 md:p-3 bg-gray-800 rounded-md border border-gray-700 hover:border-yellow-400 focus-within:border-yellow-400 focus-within:ring-2 focus-within:ring-yellow-300 transition-all duration-300'>
-                <FaEnvelope className='text-xl text-white' />
-                <Link to='/contact' className='text-white w-full focus:outline-none'>Contact</Link>
-              </li>
+            {/* Links */}
+            <ul className='flex space-x-2'>
+              {[
+                { to: '/', icon: <FaHome />, label: 'Home' },
+                { to: '/about', icon: <FaUser />, label: 'About' },
+                { to: '/projects', icon: <FaCubes />, label: 'Projects' },
+                { to: '/contact', icon: <FaEnvelope />, label: 'Contact' },
+              ].map(({ to, icon, label }, index) => (
+                <motion.li
+                  key={to}
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "rgba(55, 65, 81, 0.8)",
+                    boxShadow: "0 4px 8px rgba(251, 191, 36, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Link
+                    to={to}
+                    className='flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-md text-white transition-all relative overflow-hidden group'
+                  >
+                    <motion.span
+                      className="absolute inset-0 bg-amber-300 opacity-0 group-hover:opacity-10"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 0.1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <span className="text-amber-300">{icon}</span>
+                    <motion.span className="relative" whileHover={{ x: 2 }}>
+                      {label}
+                    </motion.span>
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
           </div>
 
-          {/* Download Resume */}
-          <motion.a
-            href='/resume.pdf'
-            download
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md transition-all'
-          >
-            <FaDownload className='text-xl' /> Download Resume
-          </motion.a>
+          {/* Mobile Navbar */}
+          <div className='md:hidden flex items-center justify-between py-4'>
+            <div className='flex items-center'>
+              <img className='w-10 h-10 rounded-full border-2 border-gray-400' src={logo} alt='Profile' />
+              <h1 className='hidden sm:block font-bold text-lg text-white ml-2'>Ankit Rathor</h1>
+            </div>
+
+            <button onClick={toggleMenu} className='text-white focus:outline-none' aria-label='Toggle menu'>
+              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isOpen && (
+            <div className='md:hidden pb-4'>
+              <ul className='space-y-2'>
+                {[
+                  { to: '/', icon: <FaHome />, label: 'Home' },
+                  { to: '/about', icon: <FaUser />, label: 'About' },
+                  { to: '/projects', icon: <FaCubes />, label: 'Projects' },
+                  { to: '/contact', icon: <FaEnvelope />, label: 'Contact' },
+                ].map(({ to, icon, label }, i) => (
+                  <motion.li
+                    key={to}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.2 + i * 0.1 }}
+                  >
+                    <Link
+                      to={to}
+                      onClick={toggleMenu}
+                      className='block px-4 py-3 bg-gray-800 rounded-md text-white hover:bg-gray-700 transition-all'
+                    >
+                      <div className='flex items-center gap-2'>
+                        {icon} {label}
+                      </div>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </nav>
+
+      {/* Spacer below fixed navbar */}
+      <div className='pt-20 md:pt-24'></div>
     </>
   );
 }
