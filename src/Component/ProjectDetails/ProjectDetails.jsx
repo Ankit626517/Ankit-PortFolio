@@ -4,6 +4,7 @@ import photos from "./ProjectImages";
 import { PinContainer } from "../ui/3d-pin"; // 
 // ✅ Your custom 3D pin component
 import { motion } from "framer-motion";
+import { FaReact } from "react-icons/fa";
 
 const projects = [
    {
@@ -46,9 +47,10 @@ export default function ProjectDetails() {
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, ease: "easeOut" }}
-  className="text-4xl md:text-5xl mt-5 font-extrabold text-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent drop-shadow-lg tracking-tight mb-8"
+  className="text-4xl md:text-5xl mt-5 font-extrabold text-center bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent drop-shadow-lg tracking-tight mb-8 flex justify-center items-center gap-3"
 >
-  Project Details
+  <FaReact className="text-5xl animate-spin-slow" />
+  Explore My Creations
 </motion.h1>
 
     <div className="flex  flex-wrap justify-center items-center gap-18 p-8">

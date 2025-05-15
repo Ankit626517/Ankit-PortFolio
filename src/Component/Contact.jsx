@@ -19,81 +19,93 @@ function Contact() {
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center min-h-screen bg-gray-900 p-6">
-      {/* Form Card */}
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-900 p-10 rounded-2xl shadow-2xl max-w-lg w-full border border-amber-400"
-      >
-        <h2 className="text-4xl font-extrabold text-center text-amber-300 mb-4">Get in Touch</h2>
-        <p className="text-base text-center text-gray-300 mb-8">Feel free to connect or ask anything!</p>
+      <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Contact Me</h2>
+        <div className="h-1 w-20 bg-blue-800 mx-auto mb-8" />
 
-        <div className="mb-6">
-          <label className="block text-gray-400 font-medium mb-2">Full Name</label>
-          <input
-            type="text"
-            className="w-full p-4 border border-amber-300 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-900 transition-all duration-300 hover:shadow-xl"
-            placeholder="Enter your full name"
-            onChange={(e) => setFname(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-gray-400 font-medium mb-2">Email Address</label>
-          <input
-            type="email"
-            className="w-full p-4 border border-amber-300 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-900 transition-all duration-300 hover:shadow-xl"
-            placeholder="Enter your email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-gray-400 font-medium mb-2">Password</label>
-          <input
-            type="password"
-            className="w-full p-4 border border-amber-300 bg-gray-800 text-white rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-900 transition-all duration-300 hover:shadow-xl"
-            placeholder="Enter your password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-gray-400 font-medium mb-2">Your Message</label>
-          <textarea
-            rows={4}
-            className="w-full p-4 border border-amber-300 bg-gray-800 text-white rounded-xl resize-none focus:outline-none focus:ring-4 focus:ring-blue-900 transition-all duration-300 hover:shadow-xl"
-            placeholder="Write your message..."
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full p-4 mt-4 text-white bg-gray-700 hover:bg-gray-600 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl"
-        >
-          Send Message ✉️
-        </button>
-
-        <p className="text-center text-gray-400 mt-6">
-          Already have an account?{" "}
-          <Link to="/Login" className="text-amber-300 hover:underline">Login</Link>
+        <p className="text-center mb-12 text-gray-700 dark:text-gray-300">
+          Feel free to reach out to me for any opportunities, collaborations, or just to say hello!
         </p>
-      </form>
 
-      {/* Social Icons */}
-      <div className="mt-10 w-full max-w-lg border border-amber-400 rounded-2xl p-6 bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300">
-        <h3 className="text-center text-xl font-semibold text-white mb-4">
-          Connect with me
-        </h3>
-        <div className="flex justify-center space-x-6">
-          <SocialIcons />
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Form */}
+          <form className="md:col-span-2 space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Your name"
+                className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
+              />
+              <input
+                type="email"
+                placeholder="Your email"
+                className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
+              />
+            </div>
+            <textarea
+              rows="5"
+              placeholder="Your message"
+              className="w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 rounded-md bg-blue-300 hover:bg-blue-400 hover:cursor-pointer text-black font-semibold transition-all"
+            >
+              Send Message
+            </button>
+             {/* Social Icons */}
+             <div className="flex justify-center space-x-4 mt-4">
+             <SocialIcons />
+             </div>
+          </form>
+         
+          
+       
+          
+
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
+              <span>📧</span>
+              <div>
+                <p className="font-semibold">Email</p>
+                <p>ankitrathore48132@gmail.com</p>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
+              <span>📱</span>
+              <div>
+                <p className="font-semibold">Phone</p>
+                <p>+91 9343770661</p>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
+              <span>💻</span>
+              <div>
+                <p className="font-semibold">GitHub</p>
+                <a href="https://github.com/Ankit626517" className="underline">
+                  https://github.com/Ankit626517
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
+              <span>🔗</span>
+              <div>
+                <p className="font-semibold">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/ankit-rathore-256b91235/" className="underline">
+                  linkedin.com/in/ankit-rathore-256b91235
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

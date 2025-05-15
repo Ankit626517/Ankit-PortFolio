@@ -15,7 +15,7 @@ function Education() {
     {
       id: 2,
       title: "Senior Secondary (Class 12th)",
-      institution: "XYZ Higher Secondary School",
+      institution: "Govt Model H.S. School, Indore",
       duration: "2019 - 2021",
       icon: <FaSchool />,
       description: "Completed 12th with Physics, Chemistry, and Mathematics (PCM) stream."
@@ -23,7 +23,7 @@ function Education() {
     {
       id: 3,
       title: "High School (Class 10th)",
-      institution: "ABC Public School",
+      institution: "Visshwa Bharti Vidhya Vihar Mandir School , Indore",
       duration: "2018 - 2019",
       icon: <FaSchool />,
       description: "Completed 10th with a strong foundation in Science and Mathematics."
@@ -31,7 +31,7 @@ function Education() {
   ];
 
   return (
-    <div className="bg-gray-900 text-white py-10 px-4 md:px-20">
+    <div className="bg-white/5 backdrop-blur-lg border border-gray-500 text-white py-10 px-4 md:px-20">
       <h2 className="text-3xl font-bold text-center mb-10 text-cyan-400">
         🎓 My Education Journey
       </h2>

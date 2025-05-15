@@ -37,7 +37,7 @@ function Home() {
   return (
     <>
       <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center p-5 md:p-20">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl border-2 border-pink-500 hover:border-yellow-200 transition-all duration-300 rounded-3xl shadow-1xl p-10 md:p-16 gap-10 group">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl border-2 border-gray-500 hover:border-blue-400 transition-all duration-300 rounded-3xl shadow-1xl p-10 md:p-16 gap-10 group">
           {/* Left Content */}
           <motion.div
             className="md:w-1/2 space-y-6"
@@ -46,13 +46,13 @@ function Home() {
             transition={{ duration: 1 }}
           >
             <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight animate-pulse">Ankit</h1>
-            <h2 className="text-2xl md:text-xl font-semibold text-yellow-400">
+            <h2 className="text-2xl md:text-xl font-semibold text-blue-400">
               CSE Student, Specialization in Web Development
             </h2>
 
             <Animate />
 
-            <p className="text-white leading-relaxed text-sm md:text-base">
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
               Crafting responsive, user-friendly, and scalable web applications with a focus on performance and modern design.
             </p>
 
@@ -60,14 +60,14 @@ function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
+                className="bg-blue-400 hover:bg-blue-700 focus:ring-4 focus:ring-green-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
               >
                 View Projects
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
+                className="bg-gray-300 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
               >
                 Contact Me
               </motion.button>

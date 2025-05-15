@@ -19,7 +19,7 @@ function SkillIcons() {
 
   return (
     <div>
-      <div className="bg-gradient-to-r from-gray-800 via-gray-900 to-black p-6 md:p-10 rounded-lg shadow-xl hover:shadow-2xl transform transition duration-500 hover:scale-105 animate-fade-in">
+      <div className="bg-white/5 backdrop-blur-lg border border-gray-500 p-6 md:p-10 rounded-lg shadow-xl hover:shadow-2xl transform transition duration-500 hover:scale-105 animate-fade-in">
         <p className="text-gray-300 text-base md:text-lg leading-loose transition duration-300 ease-in-out transform hover:scale-105 hover:text-white">
           My technical toolkit includes a variety of programming languages, frameworks, and tools that I've mastered through coursework and hands-on projects.
         </p>

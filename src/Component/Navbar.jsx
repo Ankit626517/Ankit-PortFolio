@@ -43,7 +43,7 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`w-full bg-gray-900/90 backdrop-blur border-b-2 border-amber-300 shadow-xl fixed top-0 z-50 transition-all duration-500 ease-in-out ${
+        className={`w-full bg-gray-900/90 backdrop-blur border-b-2 border-blue-400 shadow-xl fixed top-0 z-50 transition-all duration-500 ease-in-out ${
           showNavbar ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
@@ -51,7 +51,7 @@ function Navbar() {
           {/* Desktop Navbar */}
           <div className='hidden md:flex items-center justify-between py-4'>
             <div className='flex items-center space-x-4'>
-              <img className='w-12 h-12 rounded-full border-2 border-gray-400' src={logo} alt='Profile' />
+              <img className='w-12 h-12 rounded-full border-2 border-blue-800' src={logo} alt='Profile' />
               <h1 className="font-bold text-xl text-white">Ankit Rathor</h1>
             </div>
 
@@ -68,7 +68,7 @@ function Navbar() {
                   whileHover={{
                     scale: 1.05,
                     backgroundColor: "rgba(55, 65, 81, 0.8)",
-                    boxShadow: "0 4px 8px rgba(251, 191, 36, 0.3)"
+                    boxShadow: "0 4px 8px rgba(59, 130, 246, 0.3)"
                   }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -78,12 +78,12 @@ function Navbar() {
                     className='flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-md text-white transition-all relative overflow-hidden group'
                   >
                     <motion.span
-                      className="absolute inset-0 bg-amber-300 opacity-0 group-hover:opacity-10"
+                      className="absolute inset-0 bg-gray-800 opacity-0 group-hover:opacity-10"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 0.1 }}
                       transition={{ duration: 0.3 }}
                     />
-                    <span className="text-amber-300">{icon}</span>
+                    <span className="text-gray-300">{icon}</span>
                     <motion.span className="relative" whileHover={{ x: 2 }}>
                       {label}
                     </motion.span>

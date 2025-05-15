@@ -34,7 +34,7 @@ const About = () => {
         {/* Header Section */}
         <div className="text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-yellow-400"
+            className="text-4xl md:text-6xl font-bold text-blue-400"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -54,14 +54,14 @@ const About = () => {
 
         {/* About Me Glass Card */}
         <motion.div
-          className="bg-white/5 backdrop-blur-lg border border-yellow-500 rounded-3xl p-8 md:p-12 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl"
+          className="bg-white/5 backdrop-blur-lg border border-gray-500 rounded-3xl p-8 md:p-12 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-xl"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <p className="text-gray-300 text-base md:text-lg leading-loose">
            I'm Ankit Rathor, a B.Tech Computer Science and Engineering student at Lakshmi Narain College of Technology, Bhopal.{" "}
-            <span className="text-pink-400 font-semibold">
+            <span className="text-blue-400 font-semibold">
               I specialize in Web Design & Development, where I enjoy building modern, responsive, and user-centric web applications.
             </span> With a strong foundation in front-end technologies and a keen eye for design, I strive to create seamless digital experiences that are both functional and visually appealing.
           </p>

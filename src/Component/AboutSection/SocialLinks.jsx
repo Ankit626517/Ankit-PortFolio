@@ -3,13 +3,13 @@ import {  FaLinkedin, FaInstagram, FaTwitter , FaGithub } from 'react-icons/fa';
 import { motion } from "framer-motion";
 function SocialLinks() {
     const socialLinks = [
-        { icon: <FaGithub />, url: 'https://github.com/yourusername', name: 'GitHub' },
-        { icon: <FaLinkedin />, url: 'https://linkedin.com/in/yourusername', name: 'LinkedIn' },
-        { icon: <FaInstagram />, url: 'https://instagram.com/yourusername', name: 'Instagram' },
-        { icon: <FaTwitter />, url: 'https://twitter.com/yourusername', name: 'Twitter' },
+        { icon: <FaGithub />, url: 'https://github.com/Ankit626517', name: 'GitHub' },
+        { icon: <FaLinkedin />, url: 'https://linkedin.com/in/ankit-rathore-256b91235/', name: 'LinkedIn' },
+        { icon: <FaInstagram />, url: 'https://instagram.com/ankitrathore48132/', name: 'Instagram' },
+        // { icon: <FaTwitter />, url: 'https://twitter.com/yourusername', name: 'Twitter' },
       ];
   return (
-     <div className="w-full bg-gradient-to-br from-gray-900 to-black text-white py-20 px-6 flex flex-col items-center">
+     <div className="w-full bg-white/5 backdrop-blur-lg border border-gray-500 text-white py-20 px-6 flex flex-col items-center">
       <motion.h2
         className="text-3xl md:text-4xl font-bold text-yellow-400 mb-12 tracking-wider"
         initial={{ opacity: 0, y: -30 }}
