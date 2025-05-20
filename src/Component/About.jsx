@@ -15,6 +15,7 @@ import SocialLinks from "./AboutSection/SocialLinks";
 import TechDetails from "./AboutSection/TechDetails";
 import Education from "./AboutSection/Education";
 import DownloadResume from "./AboutSection/DownloadResume";
+import GitHubGraph from "./GitHubGraph";
 
 
 
@@ -74,10 +75,17 @@ const About = () => {
         {/* Technologies In Detail Section */}
         <TechDetails/>
         {/* Technologies In Detail Section */}
+           {/* GitHub Graph Section */}
+        <GitHubGraph/>
+        {/* GitHub Graph Section */}
 
         {/* Resume DOwnload Button */}
         <DownloadResume/>
         {/* Resume DOwnload Button */}
+
+     
+
+        {/* Contact Section */}
 
  {/* Education Section */}
  <Education/>

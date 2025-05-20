@@ -5,7 +5,7 @@ import SocialIcons from './SocialIcons'; // 🔁 make sure this component is pre
 function Contact() {
   const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
@@ -13,7 +13,6 @@ function Contact() {
     console.log("Form Data:", {
       name: fname,
       email,
-      password,
       message
     });
   };
