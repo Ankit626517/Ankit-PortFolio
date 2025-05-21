@@ -3,19 +3,7 @@ import { Link } from 'react-router-dom';
 import SocialIcons from './SocialIcons'; // 🔁 make sure this component is present
 
 function Contact() {
-  const [fname, setFname] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data:", {
-      name: fname,
-      email,
-      message
-    });
-  };
+  
 
   return (
       <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
@@ -32,17 +20,20 @@ function Contact() {
           <form className="md:col-span-2 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <input
+                
                 type="text"
                 placeholder="Your name"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
               <input
+                
                 type="email"
                 placeholder="Your email"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
             </div>
             <textarea
+              
               rows="5"
               placeholder="Your message"
               className="w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"

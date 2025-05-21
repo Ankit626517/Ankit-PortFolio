@@ -76,7 +76,7 @@ const About = () => {
         <TechDetails/>
         {/* Technologies In Detail Section */}
            {/* GitHub Graph Section */}
-        <GitHubGraph/>
+        {/* <GitHubGraph/> */}
         {/* GitHub Graph Section */}
 
         {/* Resume DOwnload Button */}
