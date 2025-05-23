@@ -2,11 +2,40 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import SocialIcons from './SocialIcons'; // 🔁 make sure this component is present
 
+
 function Contact() {
-  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleInputChange = (e) => {
+    console.log(e.target.name, e.target.value);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch('http://localhost:3000/PortFolioData', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data = await response.text();
+    console.log(data);
+    console.log("Form submitted", formData);
+    // Here you can add your form submission logic
+  }
+  // For example, you can send the data to your server or an email service
 
   return (
-      <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Contact Me</h2>
         <div className="h-1 w-20 bg-blue-800 mx-auto mb-8" />
@@ -17,23 +46,26 @@ function Contact() {
 
         <div className="grid md:grid-cols-3 gap-10">
           {/* Form */}
-          <form className="md:col-span-2 space-y-4">
+          <form className="md:col-span-2 space-y-4" onSubmit={handlesubmit}>
             <div className="grid md:grid-cols-2 gap-4">
               <input
-                
+                onChange={handleInputChange}
+                name="name"
                 type="text"
                 placeholder="Your name"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
               <input
-                
+                onChange={handleInputChange}
+                name="email"
                 type="email"
                 placeholder="Your email"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
             </div>
             <textarea
-              
+              onChange={handleInputChange}
+              name="message"
               rows="5"
               placeholder="Your message"
               className="w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -44,15 +76,15 @@ function Contact() {
             >
               Send Message
             </button>
-             {/* Social Icons */}
-             <div className="flex justify-center space-x-4 mt-4">
-             <SocialIcons />
-             </div>
+            {/* Social Icons */}
+            <div className="flex justify-center space-x-4 mt-4">
+              <SocialIcons />
+            </div>
           </form>
-         
-          
-       
-          
+
+
+
+
 
 
           {/* Contact Info */}

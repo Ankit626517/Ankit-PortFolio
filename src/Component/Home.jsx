@@ -92,10 +92,10 @@ function Home() {
         </div>
       </div>
 
-      {/* Invisible bottom element to detect scroll end */}
-      <div ref={bottomRef} className="h-1 w-full bg-transparent"></div>
+      {/* Invisible bottom element to detect scroll end 
+      {/* <div ref={bottomRef} className="h-1 w-full bg-transparent"></div>
 
-      {/* Scroll Down Arrow shown only when bottom is visible */}
+      {/* Scroll Down Arrow shown only when bottom is visible 
       {showArrow && (
         <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-10">
           <Link to="/about">
@@ -105,7 +105,7 @@ function Home() {
             />
           </Link>
         </div>
-      )}
+      )} */}
       
     </>
   );
