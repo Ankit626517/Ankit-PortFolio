@@ -8,30 +8,30 @@ import { Link } from 'react-router-dom';
 function Home() {
   
   const bottomRef = useRef(null);
-  const [showArrow, setShowArrow] = useState(false);
+  // const [showArrow, setShowArrow] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowArrow(entry.isIntersecting);
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1.0,
-      }
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       setShowArrow(entry.isIntersecting);
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: '0px',
+  //       threshold: 1.0,
+  //     }
+  //   );
 
-    if (bottomRef.current) {
-      observer.observe(bottomRef.current);
-    }
+  //   if (bottomRef.current) {
+  //     observer.observe(bottomRef.current);
+  //   }
 
-    return () => {
-      if (bottomRef.current) {
-        observer.unobserve(bottomRef.current);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (bottomRef.current) {
+  //       observer.unobserve(bottomRef.current);
+  //     }
+  //   };
+  // }, []);
   
 
   return (
@@ -57,20 +57,24 @@ function Home() {
             </p>
 
             <div className="flex flex-wrap gap-4 mt-6">
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-blue-400 hover:bg-blue-700 focus:ring-4 focus:ring-green-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
               >
-                View Projects
-              </motion.button>
-              <motion.button
+                <Link to="/projects">
+                  View Projects
+                </Link>
+              </motion.div>
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gray-300 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 text-black px-6 py-2 rounded-full font-semibold shadow-lg transition-all duration-200"
               >
-                Contact Me
-              </motion.button>
+               <Link to="/contact">
+                   Contact
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 

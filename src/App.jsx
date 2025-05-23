@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import Navbar from './Component/Navbar';
 import Home from './Component/Home';
@@ -12,8 +12,7 @@ function App() {
     <Router>
       <div className='overflow-x-hidden bg-gradient-to-br from-gray-900 to-black text-white min-h-screen'>
         <Navbar />
-        
-        {/* Add top padding to avoid overlapping with fixed navbar */}
+
         <div className=''>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -21,6 +20,9 @@ function App() {
             <Route path='/Education' element={<Education />} />
             <Route path='/Projects' element={<Projects />} />
             <Route path='/Contact' element={<Contact />} />
+            
+            {/* Catch-all: Redirect any unknown route to Home */}
+            <Route path="/" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </div>

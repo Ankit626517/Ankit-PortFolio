@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaDownload } from "react-icons/fa";
+// import {Resume} from './AnkitRathor.pdf'
 
 function DownloadResume() {
   return (
@@ -16,7 +17,7 @@ function DownloadResume() {
       </motion.h2>
 
       <motion.a
-        href="./AboutSection/AnkitRathor.pdf" // ✅ replace with your actual file path
+        href='/AnkitRathor.pdf' // ✅ replace with your actual file path
         download="AnkitRathor.pdf"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
