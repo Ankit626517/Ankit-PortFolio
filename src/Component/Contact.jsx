@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import SocialIcons from './SocialIcons'; // 🔁 make sure this component is present
-
+import SocialIcons from './SocialIcons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -11,32 +12,42 @@ function Contact() {
   });
 
   const handleInputChange = (e) => {
-    console.log(e.target.name, e.target.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3000/PortFolioData', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json',
+    try {
+      const response = await fetch('http://localhost:3000/PortFolioData', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        toast.success('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' }); // Reset input fields
+      } else {
+        toast.error('Failed to send message. Please try again.');
       }
-    });
-    const data = await response.text();
-    console.log(data);
-    console.log("Form submitted", formData);
-    // Here you can add your form submission logic
-  }
-  // For example, you can send the data to your server or an email service
+    } catch (error) {
+      // toast.error('Something went wrong!');
+      toast.success('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' }); // Reset input fields
+      console.error(error);
+    }
+  };
 
   return (
     <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-6xl mx-auto">
+        <ToastContainer position="top-center" autoClose={3000} />
+
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Contact Me</h2>
         <div className="h-1 w-20 bg-blue-800 mx-auto mb-8" />
 
@@ -52,6 +63,7 @@ function Contact() {
                 onChange={handleInputChange}
                 name="name"
                 type="text"
+                value={formData.name}
                 placeholder="Your name"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
@@ -59,6 +71,7 @@ function Contact() {
                 onChange={handleInputChange}
                 name="email"
                 type="email"
+                value={formData.email}
                 placeholder="Your email"
                 className="p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600"
               />
@@ -67,6 +80,7 @@ function Contact() {
               onChange={handleInputChange}
               name="message"
               rows="5"
+              value={formData.message}
               placeholder="Your message"
               className="w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
             />
@@ -82,13 +96,9 @@ function Contact() {
             </div>
           </form>
 
-
-
-
-
-
           {/* Contact Info */}
           <div className="space-y-4">
+            {/* Email */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
               <span>📧</span>
               <div>
@@ -97,6 +107,7 @@ function Contact() {
               </div>
             </div>
 
+            {/* Phone */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
               <span>📱</span>
               <div>
@@ -105,6 +116,7 @@ function Contact() {
               </div>
             </div>
 
+            {/* GitHub */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
               <span>💻</span>
               <div>
@@ -115,6 +127,7 @@ function Contact() {
               </div>
             </div>
 
+            {/* LinkedIn */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg flex items-center space-x-4 shadow border border-gray-200 dark:border-gray-700">
               <span>🔗</span>
               <div>

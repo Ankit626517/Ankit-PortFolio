@@ -85,11 +85,11 @@ function Home() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <div className="border-[3px] border-gray-700 group-hover:border-cyan-400 focus-within:border-blue-500 p-1 rounded-3xl bg-gray-800 shadow-xl transition-all duration-300">
+            <div className="border-[3px]  border-gray-700 group-hover:border-cyan-400 focus-within:border-blue-500 p-1 rounded-full bg-gray-800 shadow-xl transition-all duration-300">
               <img
                 src={logo}
                 alt="Profile"
-                className="w-72 md:w-96 rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300"
+                className="w-72 md:w-96  shadow-2xl hover:scale-105 transition-transform duration-300 rounded-full "
               />
             </div>
           </motion.div>
