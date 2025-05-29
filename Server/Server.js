@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+require('dotenv').config();
 const server = express();
 server.use(cors());
 server.use(bodyParser.json());
@@ -42,6 +42,6 @@ server.post('/PortfolioData', (req, res) => {
 });
 
 // Start server
-server.listen(3000, () => {
-  console.log('Server running on port 3000');
+server.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });
