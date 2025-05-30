@@ -21,7 +21,7 @@ function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch(process.env.REACT_APP_BASE_URL, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/PortfolioData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
