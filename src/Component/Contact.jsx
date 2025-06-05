@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SocialIcons from './SocialIcons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,61 +9,58 @@ function Contact() {
     message: '',
   });
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/PortfolioData`, {
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/PortfolioData`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        toast.success('Message sent successfully!');
+      if (res.ok) {
+        toast.success("Message sent!");
         setFormData({ name: '', email: '', message: '' });
+        console.log("Message sent successfully!");
       } else {
-        toast.error('Failed to send message. Please try again.');
+        toast.error("Sending failed!");
       }
-    } catch (error) {
-      toast.error('Something went wrong!');
-      console.error('Error:', error);
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong!");
     }
   };
 
   return (
     <section className="w-full px-6 py-16 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <ToastContainer position="top-center" autoClose={3000} />
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Contact Me</h2>
+        <h2 className="text-3xl font-bold text-center mb-4">Contact Me</h2>
         <div className="h-1 w-20 bg-blue-800 mx-auto mb-8" />
 
-        <form className="md:col-span-2 space-y-4" onSubmit={handlesubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <input
               name="name"
               type="text"
-              value={formData.name}
-              onChange={handleInputChange}
               placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
               required
               className="p-3 rounded-md bg-white dark:bg-gray-800 border"
             />
             <input
               name="email"
               type="email"
-              value={formData.email}
-              onChange={handleInputChange}
               placeholder="Your email"
+              value={formData.email}
+              onChange={handleChange}
               required
               className="p-3 rounded-md bg-white dark:bg-gray-800 border"
             />
@@ -72,15 +68,15 @@ function Contact() {
           <textarea
             name="message"
             rows="5"
-            value={formData.message}
-            onChange={handleInputChange}
             placeholder="Your message"
+            value={formData.message}
+            onChange={handleChange}
             required
             className="w-full p-3 rounded-md bg-white dark:bg-gray-800 border"
           />
           <button
             type="submit"
-            className="px-6 py-3 rounded-md bg-blue-300 hover:bg-blue-400 text-black font-semibold"
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md"
           >
             Send Message
           </button>
