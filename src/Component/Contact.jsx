@@ -14,27 +14,15 @@ function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/PortfolioData`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    // Just log the form data
+    console.log("Form Data Submitted:", formData);
+    toast.success("Message is captured!");
 
-      if (res.ok) {
-        toast.success("Message sent!");
-        setFormData({ name: '', email: '', message: '' });
-        console.log("Message sent successfully!");
-      } else {
-        toast.error("Sending failed!");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong!");
-    }
+    // Reset the form
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
