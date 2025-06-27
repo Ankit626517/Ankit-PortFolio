@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import photos from "./ProjectImages";
 import { PinContainer } from "../ui/3d-pin";
 import { motion } from "framer-motion";
@@ -36,6 +36,12 @@ const projects = [
     href: "https://chat-genie-five.vercel.app/",
     photo: photos.ChatGenie,
   },
+  {
+  title: "Career Guide",
+  description: "A student career guidance website built to help students explore future opportunities after 10th & 12th.",
+  href: "https://career-guide-iwpw.vercel.app/",
+  photo: photos.CareerGuide,
+}
 ];
 
 export default function ProjectDetails() {
